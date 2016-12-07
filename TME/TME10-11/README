@@ -1,0 +1,39 @@
+== Participants : 2 ==
+
+	David TOTY
+	Sebastien GAUTHEROT
+	
+
+== Fichiers inclus ==
+
+   	include/
+		Fichier myqueue.h fourni
+	src/
+		myqueue.c  
+			Programme principal.
+		test1_myqueue.c	
+			Programme test fourni.
+		test2_myqueue.c
+			Programme test fourni.
+		
+== Directives de 'Makefile' ==
+
+
+	
+all
+	Renvoi vers directories et les binaires
+	
+directories
+	Création des répertoires
+
+clean
+	Suppression de tous les binaires, de tous les fichiers objet, et de toutes les bibliothèques
+
+
+
+
+== Etat d'avancement ==
+
+	L'exercice 1 - OK
+
+== Réponses ==
