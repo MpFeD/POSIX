@@ -1,0 +1,68 @@
+<h1 style="text-align: center;">TME1 - Introduction &agrave; la programmation C avec POSIX</h1>
+<h2><br />
+Objectifs</h2>
+<ol>
+    <li>Faciliter la prise en main des outils de programmation et de compilation qui seront utilis&eacute;s tout au long de cette UE.</li>
+    <li>Faire prendre de bonnes habitudes vis-&agrave;-vis de la soumission des travaux.</li>
+</ol>
+<br />
+<h2><i>Avant-propos</i></h2>
+<div style="margin-left: 40px; text-align: justify;">Ce premier TME a volontairement &eacute;t&eacute; con&ccedil;u pour &ecirc;tre tr&egrave;s facile &agrave; r&eacute;soudre. Si vous le finissez avant la fin de la s&eacute;ance, tant mieux. Si vous avez du mal &agrave; r&eacute;pondre &agrave; toutes les questions dans le temps imparti, alors il est imp&eacute;ratif de vous (re)mettre &agrave; niveau en C.<br />
+&nbsp;</div>
+<div style="text-align: justify;">&nbsp;</div>
+<h2><a name="format_soumission"></a>Format de soumission</h2>
+<div style="margin-left: 40px; text-align: justify;">Lorsque vous soumettez vos travaux, vous &ecirc;tes pri&eacute;s de toujours respecter le protocole d&eacute;crit ci-apr&egrave;s.<br />
+Vous pr&eacute;parerez un r&eacute;pertoire de travail qui contiendra les &eacute;l&eacute;ments suivants :</div>
+<div style="text-align: justify; margin-left: 80px;">- r&eacute;pertoire <span style="font-family: Courier New;">bin</span> : r&eacute;pertoire vide servant de destination aux fichiers ex&eacute;cutables obtenus apr&egrave;s l'&eacute;dition des liens entre vos fichiers objets</div>
+<div style="text-align: justify; margin-left: 80px;">- r&eacute;pertoire <span style="font-family: Courier New;">include</span> : r&eacute;pertoire contenant l'ensemble de vos fichiers d'en-t&ecirc;te (headers *.h)</div>
+<div style="text-align: justify; margin-left: 80px;">- r&eacute;pertoire <span style="font-family: Courier New;">lib</span> : r&eacute;pertoire contenant l'ensemble de vos biblioth&egrave;ques pr&eacute;-compil&eacute;es (*.a)</div>
+<div style="text-align: justify; margin-left: 80px;">- r&eacute;pertoire <span style="font-family: Courier New;">obj</span> : r&eacute;pertoire vide servant de destination aux fichiers objets (*.o) obtenus apr&egrave;s compilation de vos fichiers sources</div>
+<div style="text-align: justify; margin-left: 80px;">- r&eacute;pertoire <span style="font-family: Courier New;">src</span> : r&eacute;pertoire contenant l'ensemble de vos codes sources</div>
+<div style="text-align: justify; margin-left: 80px;">- fichier <span style="font-family: Courier New;">makefile</span> : fichier contenant l'ensemble de vos directives de compilation</div>
+<div style="text-align: justify; margin-left: 80px;">- fichier <span style="font-family: Courier New;">README</span> : fichier d'explication servant de rapport pour le rendu de vos travaux</div>
+<br />
+<div style="margin-left: 40px; text-align: justify;">De tous les &eacute;l&eacute;ments dans le r&eacute;pertoire de travail, <b>le fichier README est le plus important</b>. Vous y consignez :</div>
+<div style="text-align: justify; margin-left: 80px;">- Les noms et pr&eacute;noms de tous ceux qui ont particip&eacute; &agrave; cette soumission</div>
+<div style="text-align: justify; margin-left: 80px;">- Le d&eacute;tail des fichiers que vous avez inclus dans les r&eacute;pertoires include, lib, et src (pour chaque exercice, les fichiers qui lui sont associ&eacute;s)</div>
+<div style="text-align: justify; margin-left: 80px;">- L'explication des directives de compilation fournies dans le(s) fichier(s) makefile</div>
+<div style="text-align: justify; margin-left: 80px;">- L'&eacute;tat d'avancement des travaux (ce qui fonctionne, ce qui est cod&eacute; mais produit des erreurs &agrave; la compilation / &agrave; l'ex&eacute;cution, ce qui est incomplet, ...)<br />
+- Les r&eacute;ponses aux questions pos&eacute;es dans le sujet (eg. Exercice 7 dans le TME1)</div>
+<br />
+<div style="margin-left: 40px; text-align: justify;">Avant de soumettre votre r&eacute;pertoire de travail, vous devez l'archiver au format <span style="font-family: Courier New;">TAR</span> puis le compresser au format <span style="font-family: Courier New;">GZIP</span>. Le fichier obtenu devra &ecirc;tre renomm&eacute; selon le format :</div>
+<div style="margin-left: 80px; text-align: justify;"><span style="font-family: Courier New;">[nom-prenom].li356.[no du TME].tgz</span></div>
+<div style="margin-left: 40px; text-align: justify;">C'est ce fichier que vous soumettez <b>avant la date d&eacute;lai : sauf indication contraire, au bout de 7 jours &agrave; partir de la s&eacute;ance de TME</b>.</div>
+<div style="margin-left: 40px; text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">&nbsp;</div>
+<h2>Exercices</h2>
+<div style="text-align: justify;">&nbsp;</div>
+<h3>Exercice 1</h3>
+<div style="text-align: justify; margin-left: 40px;">R&eacute;cup&eacute;rez la base de code soit en la <a href="http://australe.upmc.fr/access/content/group/LI356_01/Base%20de%20code/TME1.start.tgz">t&eacute;l&eacute;chargeant</a>, soit en recopiant le fichier <span style="font-family: Courier New;">/Infos/lmd/2009/licence/ue/li356-2010fev/TME1.start.tgz</span><br />
+D&eacute;compressez le fichier et lancez l'exemple d'ex&eacute;cution &agrave; l'aide de la commande make</div>
+<h3>Exercice 2</h3>
+<div style="text-align: justify; margin-left: 40px;">Modifiez le fichier <span style="font-family: Courier New;">makefile</span> pour archiver le code de la pile sous forme de tableau dans une biblioth&egrave;que.<br />
+Le but est d'obtenir que le fichier objet <span style="font-family: Courier New;">stack_array.o</span> soit archiv&eacute; dans une biblioth&egrave;que <span style="font-family: Courier New;">libstack.a</span><br />
+La compilation de l'ex&eacute;cutable final doit maintenant se faire sans passer par le fichier objet <span style="font-family: Courier New;">stack_array.o</span></div>
+<div style="text-align: justify;">&nbsp;</div>
+<h3>Exercice 3</h3>
+<div style="text-align: justify; margin-left: 40px;">On veut pouvoir modifier la taille de la pile au moment de la compilation, en influant sur la valeur de la constante <span style="font-family: Courier New;">STACK_SIZE</span> contenue dans le code.<br />
+Utilisez la directive <span style="font-family: Courier New;">-D</span> de <span style="font-family: Courier New;">gcc</span> pour modifier cette valeur depuis le makefile, puis obtenez son affichage dans le programme principal de <span style="font-family: Courier New;">stack_test.c</span><br />
+&nbsp;</div>
+<h3>Exercice 4</h3>
+<div style="text-align: justify; margin-left: 40px;">L'utilisation d'un tableau n'est pas satisfaisante ; on pr&eacute;f&egrave;rerait passer par une liste doublement cha&icirc;n&eacute;e.<br />
+Compl&eacute;tez le code du fichier <span style="font-family: Courier New;">list_impl.c</span> pour pouvoir :</div>
+<div style="text-align: justify; margin-left: 80px;">- Extraire un &eacute;l&eacute;ment en t&ecirc;te de liste (la cellule associ&eacute;e est enlev&eacute;e de la liste et la m&eacute;moire qu'elle occupait est d&eacute;sallou&eacute;e)<br />
+- Extraire un &eacute;l&eacute;ment en fin de liste  (la cellule associ&eacute;e est enlev&eacute;e de la liste et la m&eacute;moire qu'elle occupait est d&eacute;sallou&eacute;e)<br />
+- Calculer le nombre d'&eacute;l&eacute;ments contenus dans la liste</div>
+<div style="text-align: justify;">&nbsp;</div>
+<h3>Exercice 5</h3>
+<div style="text-align: justify; margin-left: 40px;">Cr&eacute;ez et codez un fichier <span style="font-family: Courier New;">stack_list.c</span> utilisant les primitives de <span style="font-family: Courier New;">list.h</span> pour construire une pile dynamique qui impl&eacute;mente <span style="font-family: Courier New;">stack.h</span><br />
+Ajoutez une directive de compilation dans le makefile pour construire une nouvelle biblioth&egrave;que <span style="font-family: Courier New;">libstack.a</span> &agrave; partir de <span style="font-family: Courier New;">stack_list.c</span> et de <span style="font-family: Courier New;">list_impl.c</span><br />
+Recompilez un ex&eacute;cutable &agrave; partir du programme de test de la pile (<span style="font-family: Courier New;">stack_test.c</span>) et &agrave; l'aide de votre nouvelle biblioth&egrave;que pour v&eacute;rifier qu'elle fonctionne correctement.</div>
+<div style="text-align: justify;">&nbsp;</div>
+<h3>Exercice 6</h3>
+<div style="text-align: justify; margin-left: 40px;">Cr&eacute;ez et codez un fichier <span style="font-family: Courier New;">fifo</span><span style="font-family: Courier New;">_list.c</span> utilisant les primitives de <span style="font-family: Courier New;">list.h</span> pour construire une file dynamique qui impl&eacute;mente <span style="font-family: Courier New;">fifo</span><span style="font-family: Courier New;">.h</span><br />
+Ajoutez une directive de compilation dans le makefile pour construire une nouvelle biblioth&egrave;que <span style="font-family: Courier New;">libfifo.a</span> &agrave; partir de <span style="font-family: Courier New;">fifo</span><span style="font-family: Courier New;">_list.c</span> et de <span style="font-family: Courier New;">list_impl.c</span><br />
+Recompilez un ex&eacute;cutable &agrave; partir du programme de test de la file (<span style="font-family: Courier New;">fifo</span><span style="font-family: Courier New;">_test.c</span>) et &agrave; l'aide de votre nouvelle biblioth&egrave;que pour v&eacute;rifier qu'elle fonctionne correctement.</div>
+<div style="text-align: justify;">&nbsp;</div>
+<h3>Exercice 7</h3>
+<div style="text-align: justify; margin-left: 40px;">Le parcours de toute la liste pour d&eacute;terminer le nombre d'&eacute;l&eacute;ments est trop co&ucirc;teux. Quelles sont les modifications &agrave; apporter, et dans quel(s) fichier(s), pour rendre ce calcul plus efficace ?</div>
