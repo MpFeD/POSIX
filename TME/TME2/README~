@@ -1,0 +1,81 @@
+== Participants : 2 ==
+
+	David TOTY
+	Seb GAUTHEROT
+	
+
+== Fichiers inclus ==
+
+	include/fifo.h
+		Définitions (types et opérations) pour une file (FIFO) générique
+		[Ex. 6, 7]
+		
+	include/list.h
+		Définitions (types et opérations) pour une liste doublement chaînée générique
+		[Ex. 4, 5, 6]
+
+	include/stack.h
+		Définitions (types et opérations) pour une pile (LIFO) générique
+		[Ex. 1, 2, 5]
+
+	src/fifo_test.c
+		Programme principal (main) pour tester la file générique
+		[Ex. 6]
+
+	src/stack_array.c
+		Implémentation de la pile sous forme de tableau statique
+		[Ex. 1, 2]
+
+	src/stack_test.c
+		Programme principal (main) pour tester la pile générique
+		[Ex. 1, 2, 3, 5]
+
+	src/list_impl.c
+		Squelette d'implémentation de la liste doublement chaînée (à compléter)
+		[Ex. 4, 5, 6, 7]
+
+
+== Directives de 'makefile.ini' ==
+
+	runstack
+		Compilation de l'implémentation stack_array.c et du programme de test de la pile (stack_test.c) au format binaire (stack_test)
+		Lancement de l'exécutable stack_test
+	
+	all
+		Renvoi vers 'runstack'
+	
+	directories
+		Création des répertoires temporaires s'ils n'existent pas déjà
+
+	clean
+		Suppression de tous les binaires, de tous les fichiers objet, et de toutes les bibliothèques
+
+
+	cleanall
+		Suppression des répertoires et fichiers temporaires
+
+
+== Etat d'avancement ==
+
+	L'exercice 1 - OK
+
+	L'exercice 2 - OK
+	
+	L'exercice 3 - OK
+
+	L'exercice 4 - OK
+
+	L'exercice 5 - Fonctionne pas, malgré les efforts, "undefined reference to `convert'
+collect2: error: ld returned 1 exit status"
+
+
+== Réponses ==
+
+	Exercice 3 : 6 Processus sont créés.
+Arborescence :		
+	.
+       /|\
+      . . .
+      	| |\
+	. . .
+

@@ -1,0 +1,59 @@
+<h1 style="text-align: center;">TME3 - Recouvrement de code et Gestion  de la m&eacute;moire</h1>
+<h2><br />
+Objectifs</h2>
+<ol>
+    <li>Approfondir les notions associ&eacute;es &agrave; la cr&eacute;ation de processus,  notamment la gestion de la m&eacute;moire et l'h&eacute;ritage.</li>
+    <li>Programmer des cr&eacute;ations de processus et g&eacute;rer la  synchronisation entre processus d'une m&ecirc;me famille.</li>
+    <li>Mettre en place des recouvrements de code dans les programmes.</li>
+</ol>
+<div style="margin-left: 40px; text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">&nbsp;</div>
+<h2>Exercices</h2>
+<h3>Exercice 1 : Cr&eacute;ations de processus avec passage de donn&eacute;es</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>R&eacute;digez un programme qui cr&eacute;e une cha&icirc;ne de <code><span class="style1">N_FILS</span></code>  processus (p&egrave;re cr&eacute;e un fils, fils cr&eacute;e un petit-fils, ...) &agrave; l'aide de  la fonction <code>fork</code>, puis affiche le <code>PID</code> de l'ensemble des descendants cr&eacute;&eacute;s. A  cet effet, le programme principal pr&eacute;pare un tableau de <code>N_FILS</code> entiers  en utilisant la fonction <code>calloc</code>. Chaque processus de la cha&icirc;ne va entrer son propre <code>PID</code> dans le tableau avant de cr&eacute;er un fils. Lorsque le dernier processus a &eacute;t&eacute; cr&eacute;&eacute;, celui-ci affiche l'ensemble des <code>PID</code>s contenus dans le  tableau.</p>
+<p>Serait-il possible de faire r&eacute;aliser cet affichage par le programme principal ? Justifiez votre r&eacute;ponse.<br />
+<meta http-equiv="content-type" content="text/html; charset=utf-8">Serait-il possible de faire r&eacute;aliser cet affichage par le premier processus fils cr&eacute;&eacute; ? Justifiez votre r&eacute;ponse.<br />
+&nbsp; </meta>
+</p>
+</div>
+<h3>Exercice 2 : Premier recouvrement de code</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>Consid&eacute;rez le programme suivant (<a href="http://australe.upmc.fr/access/content/group/LI356_01/Base%20de%20code/TME3/fork-exec.c">&eacute;galement t&eacute;l&eacute;chargeable</a>) :</p>
+<blockquote>
+<p><span style="font-family: Courier New;">int main(int argc, char **argv) {</span></p>
+<blockquote>
+<p><span style="font-family: Courier New;">struct timeval tv;<br />
+<br />
+printf(&quot;Resultat de la commande 'date'\n&quot;);<br />
+<br />
+execlp(&quot;date&quot;, &quot;date&quot;, &quot;+%s&quot;, NULL);<br />
+<br />
+printf(&quot;Comparaison avec la fonction 'gettimeofday'\n&quot;);<br />
+<br />
+gettimeofday(&amp;tv, NULL);<br />
+printf(&quot;%d\n&quot;, (int)tv.tv_sec);<br />
+<br />
+return 0;</span></p>
+</blockquote>
+<p><span style="font-family: Courier New;">}</span></p>
+</blockquote>
+<p>Quel est l'affichage qui r&eacute;sulte de l'ex&eacute;cution de ce programme ?  Expliquez pourquoi.</p>
+<p>Modifiez le programme pour que l'affichage se fasse correctement,  tout en garantissant que l'affichage de la comparaison avec <code>gettimeofday</code> se fait bien  apr&egrave;s celui associ&eacute; &agrave; la commande <code>date</code>.</p>
+</div>
+<h3>Exercice 3 : Compilation en parall&egrave;le</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>Ecrivez un programme C qui prend en param&egrave;tre une s&eacute;rie de fichiers  source .c, les compile chacun s&eacute;par&eacute;ment et simultan&eacute;ment puis &eacute;dite  les liens pour produire un ex&eacute;cutable. Ce programme doit lancer un  processus fils pour chacun des noms de fichiers pass&eacute;s en param&egrave;tre.  Chaque fils ex&eacute;cute le programme <code>gcc -c</code> sur le fichier dont il s'occupe.  Le p&egrave;re attend la terminaison de tous ses fils; si l'ensemble des fils  ont termin&eacute; sans erreur, le p&egrave;re r&eacute;alise l'&eacute;dition de liens en ex&eacute;cutant <code> gcc</code> sur les fichiers .o produits par les fils.<br />
+Pour tester votre programme, vous pouvez utiliser les fichiers sources disponibles en cliquant <a href="http://australe.upmc.fr/access/content/group/LI356_01/Base%20de%20code/TME3/tme3-ex3.tgz">ici</a>.</p>
+</div>
+<h3>Exercice 4 : Boucle de recouvrement de code</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>R&eacute;digez un programme qui imprime son <code>PID</code>, puis se lance lui-m&ecirc;me  au moyen de la fonction '<code>exec</code>' de votre choix. On fera en sorte que la  r&eacute;cursion s'arr&ecirc;te &agrave; la 5e it&eacute;ration.<br />
+Qu'observez-vous au niveau des PIDs affich&eacute;s successivement ? Expliquez ce r&eacute;sultat.</p>
+</div>
+<h3>Exercice 5 : Espionnage de shell</h3>
+<blockquote>
+<p>R&eacute;diger un programme <code>spy</code> qui se comporte comme une surcouche du  shell.<br />
+Une fois lanc&eacute;, <code>spy</code> r&eacute;cup&egrave;re toute commande rentr&eacute;e par l'utilisateur  (cf. le squelette de programme &agrave; compl&eacute;ter <a href="http://australe.upmc.fr/access/content/group/LI356_01/Base%20de%20code/TME3/spy-incomplete.c"><code>spy-incomplete.c</code></a>) et lance l'ex&eacute;cution  de cette commande au moyen d'une fonction de la famille '<code>exec</code>'.<br />
+On utilisera <code>execlp</code> pour les commandes entr&eacute;es avec exactement un  argument, et <code>execvp</code> pour toutes les autres.</p>
+</blockquote>

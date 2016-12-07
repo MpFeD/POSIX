@@ -1,0 +1,64 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define _POSIX_SOURCE 1 
+#include <sys/types.h> 
+#include <unistd.h>
+#include <string.h>
+
+int main(int argc, char** argv){
+  int i;
+  char chaine1[100]="";
+  char chaine2[100]="";
+
+  if (argc <= 1){
+    printf("Erreur, le programme doit être lancé avec des arguments\n");
+    return 1;
+  }
+
+  if(fork()==0){
+    execl("./TME3-EX3/Makefile", "make", "clean",NULL);
+    exit(0);
+  }
+  
+  wait(NULL);
+
+  for (i=1;i<argc;i++){
+    if (fork()==0){
+      int j=0;
+      while(1){
+	chaine1[j] = argv[i][j];
+	j++;
+	if (argv[i][j] == '\0'){
+	  strcpy(chaine2,chaine1);
+	  strcat(chaine1, ".o");
+	  strcat(chaine2, ".c");
+	  execl("/usr/bin/gcc","gcc","-o", chaine1, "-c", chaine2, NULL);
+	  break;
+	}
+      }
+    }
+  }
+
+  for (i=0;i<argc;i++){
+    wait(NULL);
+  }
+
+
+  if (fork()==0){
+    execl("/usr/bin/gcc","gcc","-o","./TME3-EX3/affiche-main.o","-c","./TME3-EX3/affiche-main.c","-I./TME3-EX3/",NULL);
+    exit(0);
+  }
+  wait(NULL);
+
+
+  if (fork()==0){
+    execl("/usr/bin/gcc","gcc","-o", "./TME3-EX3/affiche", "./TME3-EX3/affiche1.o","./TME3-EX3/affiche2.o","./TME3-EX3/affiche3.o","./TME3-EX3/affiche4.o","./TME3-EX3/affiche-main.o", NULL);
+    exit(0);
+  }
+  wait(NULL);
+  
+  printf("Compilation terminée\n*****\nExécution du programme :\n\n");
+  execl("./TME3-EX3/affiche", "./affiche",NULL);
+  return 0;
+
+}

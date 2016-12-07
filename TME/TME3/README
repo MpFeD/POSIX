@@ -1,0 +1,77 @@
+== Participants : 2 ==
+
+	David TOTY
+	Sebastien GAUTHEROT
+	
+
+== Fichiers inclus ==
+
+	include/
+		Vide car aucun fichier.h utilisé
+	
+	src/exo1.c
+		Programme principal (main) pour l'exercice 1 (question b)
+		[Ex. 1]
+
+	src/fork-exec.c
+		Programme principal (main) pour l'exercice 2
+		[Ex. 2]
+
+	src/exo3.c
+		Programme principal (main) pour l'exercice 3
+		[Ex. 3]
+		
+	TME3-EX3/
+		Dossier contenant divers fichiers à compiler pour l'exercice 3
+		[Ex. 3]
+
+	src/exo4.c
+		Programme principal (main) pour l'exercice 4
+		[Ex. 3]
+		
+	src/spy-incomplete.c
+		Programme principal (main) pour l'exercice 5
+		[Ex. 5]
+
+
+== Directives de 'makefile.ini' ==
+
+
+	
+	all
+		Renvoi vers directories et les binaires
+	
+	directories
+		Création des répertoires
+
+	clean
+		Suppression de tous les binaires, de tous les fichiers objet, et de toutes les bibliothèques
+
+
+
+== Etat d'avancement ==
+
+	L'exercice 1 - OK
+
+	L'exercice 2 - OK
+	
+	L'exercice 3 - OK
+
+	L'exercice 4 - OK
+
+	L'exercice 5 - OK
+
+== Réponses ==
+
+	Exercice 1 :
+		Non, le programme principale ne peut pas.
+		C'est possible si le tableau est global, mais la question indique de déclaré le tableau avec un malloc.
+		Non le premier fils ne peut pas afficher le tableau, il ne connait que son pid à lui.
+
+	Exercice 2 :
+		exec remplace l'écécution du programme, c'est pour ça que l'affichage correspond à celui de la commande date et la suite n'est pas affichée.
+
+	Exercice 3 : 
+	Commande a exécuter : ./bin/exo3 /users/nfs/Etu5/3000755/LI356/TME3/TME3-EX3/affiche1 /users/nfs/Etu5/3000755/LI356/TME3/TME3-EX3/affiche2 /users/nfs/Etu5/3000755/LI356/TME3/TME3-EX3/affiche3 /users/nfs/Etu5/3000755/LI356/TME3/TME3-EX3/affiche4 
+
+	

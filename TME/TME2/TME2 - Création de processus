@@ -1,0 +1,85 @@
+<h1 style="text-align: center;">TME2 - Cr&eacute;ation de processus &amp;  Synchronisation p&egrave;re/fils</h1>
+<h2><br />
+Objectifs</h2>
+<ol>
+    <li>Assimiler les notions associ&eacute;es &agrave; la cr&eacute;ation de processus,  notamment la gestion de la m&eacute;moire et l'h&eacute;ritage.</li>
+    <li>Programmer des cr&eacute;ations de processus et g&eacute;rer la  synchronisation entre processus d'une m&ecirc;me famille.</li>
+</ol>
+<div style="margin-left: 40px; text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">&nbsp;</div>
+<h2>Exercices</h2>
+<h3>Exercice 1 : Premi&egrave;res cr&eacute;ations de processus</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>R&eacute;digez un programme qui cr&eacute;e <span style="font-family: Courier New;"><span class="style1">N_FILS</span></span>  processus fils.</p>
+<p>2 cas &agrave; traiter :</p>
+<ol type="a">
+    <li>Le programme utilise la m&eacute;thode it&eacute;rative (boucle)</li>
+    <li>Le programme utilise  la m&eacute;thode r&eacute;cursive.</li>
+</ol>
+<p>N.B: Il ne s'agit pas ici de cr&eacute;er une cha&icirc;ne de processus : p&egrave;re  cr&eacute;e un fils, fils cr&eacute;e un petit-fils, ... <strong>Tous les processus  fils cr&eacute;&eacute;s doivent avoir le m&ecirc;me p&egrave;re</strong>.</p>
+</div>
+<h3>Exercice 2 : Premi&egrave;res synchronisations p&egrave;re/fils</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>Reprenez l&rsquo;exercice 1, mais cette fois-ci en utilisant <span class="style1">'<span style="font-family: Courier New;">wait</span>'</span> pour :</p>
+<ol type="i">
+    <li>attendre 1 fils quelconque,</li>
+    <li>attendre tous les fils,</li>
+    <li>
+    <div align="justify">attendre le dernier fils cr&eacute;&eacute; uniquement.</div>
+    </li>
+</ol>
+</div>
+<h3>Exercice 3 : Arbre de cr&eacute;ation</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>Consid&eacute;rez le programme suivant :</p>
+<blockquote>
+<p class="style1"><span style="font-family: Courier New;">int main (int arg, char* argv[]) {</span></p>
+<blockquote class="style1"><span style="font-family: Courier New;"> int i, j, p; <br />
+<br />
+for (i=0; i&lt;3 ; i++)<br />
+</span><blockquote><span style="font-family: Courier New;"> if ((p=fork ()) == 0) {</span><blockquote><span style="font-family: Courier New;"> printf (&quot;i=%d\n&quot;, i);<br />
+j=0; <br />
+while (j&lt;i &amp;&amp; ((p=fork()) == 0)) </span><blockquote><span style="font-family: Courier New;">j++;</span></blockquote><span style="font-family: Courier New;"> if (p==0)</span><blockquote><span style="font-family: Courier New;">printf(&ldquo;j=%d\n&quot;,j);</span></blockquote><span style="font-family: Courier New;">exit(j);</span></blockquote><span style="font-family: Courier New;"> } /* if */ </span></blockquote><span style="font-family: Courier New;">return (0);</span></blockquote>
+<p class="style1"><span style="font-family: Courier New;">}</span></p>
+</blockquote>
+<p><br />
+<em>Observation : Nous consid&eacute;rons que la cr&eacute;ation d'un processus  fils n'&eacute;choue pas.</em></p>
+<p>Combien des processus sont-ils cr&eacute;&eacute;s ? Repr&eacute;sentez l'arborescence  de processus cr&eacute;&eacute;s en donnant les affichages de chaque processus.</p>
+<p>Modifiez le code pour guarantir la terminaison du processus p&egrave;re  (celui cr&eacute;&eacute; &agrave; l'appel du <span style="font-family: Courier New;">main</span>) apr&egrave;s que <strong>tous</strong> les  autres processus cr&eacute;&eacute;s  se sont eux-m&ecirc;mes termin&eacute;s.</p>
+</div>
+<h3>Exercice 4 : Calculateur de carr&eacute; magique</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>Soit une matrice 3x3 de chiffres entre 0 et 9. Un carr&eacute; magique  est une matrice carr&eacute;e dont les sommes des lignes, des colonnes, et des  diagonales sont toutes &eacute;gales. Par exemple, une matrice contenant le  m&ecirc;me chiffre dans toutes ses cases est forc&eacute;ment magique. Autre exemple :  une matrice 2x2 sym&eacute;trique est forc&eacute;ment magique &eacute;galement.<br />
+On se donne pour d&eacute;part la matrice :</p>
+<blockquote>
+<p>{{4, a, 8}, {b, c, d}, {2, e, 6}};</p>
+</blockquote>
+<p>R&eacute;digez un programme qui recherche les valeurs {a, b, c, d, e}  faisant de cette matrice un carr&eacute; magique 3x3. <br />
+La r&eacute;solution se fera en  force brute : le programme principal cr&eacute;e 10 processus fils en  attribuant &agrave; chacun une valeur diff&eacute;rente pour a, puis se met en attente  de la terminaison de ses fils. Chacun des fils va ensuite calculer la  matrice en fonction de sa valeur de a, v&eacute;rifier que le carr&eacute; obtenu est  magique, et si c'est le cas afficher sa solution.<br />
+Lorsque tous ses fils se sont termin&eacute;s, le programme principal affiche le nombre de carr&eacute;s magiques qui ont effectivement &eacute;t&eacute; trouv&eacute;s.<br />
+Pour cet exercice, vous pouvez utiliser le fichier <a href="http://australe.upmc.fr/access/content/group/LI356_01/Base%20de%20code/TME2/decoder.c">decoder.c</a></p>
+</div>
+<h3>Exercice 5 : Convertisseur de devises</h3>
+<div style="text-align: justify; margin-left: 40px;">
+<p>Ecrire un programme single_converter qui convertit un montant,  exprim&eacute; dans une devise quelconque en des devises pr&eacute;d&eacute;finies (cf.  fichiers <a href="http://australe.upmc.fr/access/content/group/LI356_01/Base%20de%20code/TME2/converters.c">converters.c</a> &amp; <a href="http://australe.upmc.fr/access/content/group/LI356_01/Base%20de%20code/TME2/converters.h">converters.h</a>), et affiche le r&eacute;sultat de la conversion. <br />
+Les param&egrave;tres de conversion sont entr&eacute;s par l&rsquo;utilisateur comme  arguments du programme de conversion au format suivant :</p>
+<blockquote>
+<p><span style="font-family: Courier New;">single_converter &lt;<i>devise</i>&gt; &lt;<i>montant</i>&gt;</span></p>
+<blockquote>
+<p>- <i><span style="font-family: Courier New;">devise</span></i> repr&eacute;sente la devise source,<br />
+- <i><span style="font-family: Courier New;">montant</span></i> correspond au montant &agrave; convertir dans la devise  cible.</p>
+</blockquote>   </blockquote>
+<p>Ce programme met en &oelig;uvre les processus suivants:<br />
+Le processus p&egrave;re recueille les param&egrave;tres entr&eacute;s en argument par  l'utilisateur, puis cr&eacute;e un fils par devise en leur transmettant les  param&egrave;tres, et enfin attend la fin de ses fils pour annoncer la fin du  traitement de conversion.<br />
+Un processus fils par devise, qui effectue la conversion puis  affiche le r&eacute;sultat.</p>
+<p>Exemple de trace de r&eacute;sultat :</p>
+<p><code><span style="font-family: Courier New;">./single_converter CNY &quot;100.0&quot;</span></code></p>
+<blockquote>
+<p><code><span style="font-family: Courier New;">Conversion for: CNY 100.000<br />
+EUR 10.246<br />
+GBP 6.985<br />
+USD 12.358<br />
+JPY 1406.791<br />
+CNY 100.000<br />
+End of Conversion</span></code></p>
+</blockquote></div>

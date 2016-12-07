@@ -1,0 +1,122 @@
+== Participants : 2 ==
+
+	David TOTY
+	Sebastien GAUTHEROT
+	
+
+== Fichiers inclus ==
+
+	include/
+		Vide car aucun fichier.h utilisé
+	
+	src/init-sig.1.c
+		Programme fourni pour l'exercice 1 
+		[Ex. 1]
+
+	src/init-sig.2.c     
+		Programme fourni pour l'exercice 1 
+		[Ex. 1]
+
+	src/init-sig.3.c
+		Programme fourni pour l'exercice 1 
+		[Ex. 1]
+
+	src/init-sig.4.c
+		Programme fourni pour l'exercice 1 
+		[Ex. 1]
+
+	src/init-sig.5.c
+		Programme fourni pour l'exercice 1 
+		[Ex. 1]
+
+	src/voodoo.c
+		Programme fourni pour l'exercice 2
+		[Ex. 2]
+
+
+	src/pending-signals.c
+		Programme principal (main) pour l'exercice 3
+		[Ex. 3]
+
+	src/pending-signals-2.c
+		Programme principal (main) pour l'exercice 4
+		[Ex. 4]
+
+	src/pending-signals-3.c
+		Programme principal (main) pour l'exercice 5
+		[Ex. 5]
+
+	src/accountant.c
+		Programme principal (main) pour l'exercice 6
+		[Ex. 6]
+		
+	src/spy-incomplete.c
+		Programme principal (main) pour l'exercice 7
+		[Ex. 7]
+
+
+== Directives de 'makefile.ini' ==
+
+
+	
+	all
+		Renvoi vers directories et les binaires
+	
+	directories
+		Création des répertoires
+
+	clean
+		Suppression de tous les binaires, de tous les fichiers objet, et de toutes les bibliothèques
+
+
+
+== Etat d'avancement ==
+
+	L'exercice 1 - OK
+
+	L'exercice 2 - OK  
+
+	L'exercice 3 - OK
+
+	L'exercice 4 - OK  
+
+	L'exercice 5 - OK
+
+	L'exercice 6 - OK
+
+	L'exercice 7 - OK
+== Réponses ==
+
+	Exercice 1 :
+		init-sig.1 : Il ne se termine pas lui même, besoin d'être débloqué avec un sigint.
+			     L'appel de pause() le rend bloquant.
+
+		init-sig.2 : Il ne se termine pas lui même, besoin d'être débloqué avec un sigint.
+			     Le programme applique un masque rempli à l'exception de SIGINT, il peux donc être débloqué avec un SIGINT mais pas d'autres signaux (à l'exception de SIGKILL).
+
+		init-sig.3 : Il ne se termine pas lui même, SIGINT ne le débloque pas.
+ 			     Le programme applique un masque pour SIGINT. Il ignore également le signal SIGALRM.
+
+		init-sig.4 : Il ne se termine pas lui même, SIGINT ne le débloque pas.
+		 	     Le programme applique un masque rempli excepté de SIGINT, il applique ce masque et la il change l'action pour appeler la méthode sigint_handler à chaque envoi de SIGINT. Cependant il se bloque après le premier SIGINT. C'est normal, dans le sigint_handler (la fonction appelée après envoi d'un SIGINT) l'action est changée : sigact.sa_handler = SIG_IGN; SIG_IGN correspond à l'action d'ignorer le signal.
+
+
+		init-sig.5 : Il ne se termine pas lui même, SIGINT ne le débloque pas.
+			     Le programme applique un masque rempli sauf pour SIGINT et SIGALRM, il change le comportement par défaut pour ces 2 signaux. alarm(n) est une fonction qui permet d'envoyer un SIGALRM après n secondes. il s'envoie donc des SIGALRM toutes les 5 secondes.
+
+
+	Exercice2 :
+		  On ne peut pas tuer un processus zombie avec un SIGKILL. On peut néanmoins utiliser SIGKILL sur le père.  
+
+		  
+	Exercice 3 :
+		 Le fait de supprimer SIGINT et	SIGQUIT du masque modifie donc celui ci et la fonction sigismember sera effectuer sur un masque différent de l'original. Cela empèche un affichage correct. 
+
+	Exercice 4 : 
+		 Le comportement par défaut est désormais d'ignorer le signal, cela ne resoud pas le problème car les signaux ne sont pas pendants et sigpending(&sig) fera de sig un ensemble vide.
+
+	Exercice 5 :
+		 La veleur maximale sera de 1, c'est normal. On ne pexu stocker plusieurs signaux du meme type dans le même masque avec la fonction sigpending. Ce programme ne résout toujours pas le problème lié à la question 3, la suppression des signaux dans le masque ne permet un affichage convenable.
+		 
+	Exercice 7 : 
+		 Attention, le programme utilise un sleep(1) avant d'envoyer un kill à ses processus fils, cela a pour but de bien attendre que le fils execute la commande avant que le père ne sorte du while, il pourrait dans le cas contraire envoyé un kill sur un pid inexistant...
