@@ -1,0 +1,55 @@
+#include <sys/types.h> 
+#include <signal.h> 
+#include <unistd.h> 
+#include <stdlib.h> 
+#include <stdio.h> 
+
+
+
+sigset_t sig_proc; 
+struct sigaction action;
+
+void sig_hand(int sig){ 
+  
+}
+
+
+
+void mywait(){
+
+  sigfillset(&sig_proc); 
+  action.sa_mask=sig_proc; 
+  action.sa_flags=0; 
+  action.sa_handler = sig_hand; 
+  sigdelset(&sig_proc,SIGCHLD);
+  sigaction(SIGCHLD, &action,NULL);
+  sigsuspend(&sig_proc);
+ 
+
+}
+
+
+
+int main (int arg, char** argv) {
+
+  if (fork()==0){
+    sleep(1);
+    printf("Le fils 1 se termine\n");
+    exit(0);
+  }
+  mywait();
+
+  /*Test pour la question : */
+  if (fork()==0){
+    sleep(1);
+    printf("Le fils 2 se termine\n");
+    exit(0);
+  }
+  mywait();
+
+  printf("Le pere se termine\n");
+  return 0;
+
+}
+
+

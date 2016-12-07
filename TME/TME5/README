@@ -1,0 +1,61 @@
+== Participants : 2 ==
+
+	David TOTY
+	Sebastien GAUTHEROT
+	
+
+== Fichiers inclus ==
+
+   	include/
+		Vide car aucun fichier.h utilisé
+
+
+	src/mywait.c     
+		Programme pour l'exercice 1 
+		[Ex. 1]
+
+	src/mysleep.c     
+		Programme pour l'exercice 2 
+		[Ex. 2]
+
+	src/synchro3.c     
+		Programme pour l'exercice 3 
+		[Ex. 3]
+
+	src/exo4.c     
+		Programme pour l'exercice 4 
+		[Ex. 4]
+
+== Directives de 'Makefile' ==
+
+
+	
+all
+	Renvoi vers directories et les binaires
+	
+directories
+	Création des répertoires
+
+clean
+	Suppression de tous les binaires, de tous les fichiers objet, et de toutes les bibliothèques
+
+
+
+
+== Etat d'avancement ==
+
+	L'exercice 1 - OK
+
+	L'exercice 2 - OK
+	
+	L'exercice 3 - OK
+
+	L'exercice 4 - OK
+
+== Réponses ==
+
+	Exercice 1 :
+		Ce programme peut marcher avec plusieurs fils mais dans ce cas il faut autant de sigsuspend que de fils.
+
+	Exercice 3 :
+		 Il faut un nombre de deux signaux minimum pour obtenir cette synchronisation.

@@ -1,0 +1,56 @@
+== Participants : 2 ==
+
+	David TOTY
+	Sebastien GAUTHEROT
+	
+
+== Fichiers inclus ==
+
+
+   	include/converters.h
+		Header pour le programme principal.
+		
+	src/single_converter.c     
+		Programme principal pour l'exercice 1.
+
+	src/conversion_server.c     
+		Programme server pour l'exercice 2.
+
+	src/conversion_client.c     
+		Programme client pour l'exercice 2, l'éxécuter en premier.
+
+	src/multi_converter.c     
+		Programme server pour l'exercice 3.
+
+	src/multi_client.c     
+		Programme client pour l'exercice 3, l'éxécuter en premier.
+
+
+== Directives de 'Makefile' ==
+
+
+	
+all
+	Renvoi vers directories et les binaires
+	
+directories
+	Création des répertoires
+
+clean
+	Suppression de tous les binaires, de tous les fichiers objet, et de toutes les bibliothèques
+
+
+
+
+== Etat d'avancement ==
+
+
+Exercice 1 - OK
+
+Exercice 2 - OK
+
+Exercice 3 - OK
+
+== Réponses ==
+
+	

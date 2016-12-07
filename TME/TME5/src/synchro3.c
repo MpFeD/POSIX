@@ -1,0 +1,65 @@
+#define _POSIX_SOURCE 1
+#include <sys/types.h> 
+#include <signal.h> 
+#include <unistd.h> 
+#include <stdlib.h> 
+#include <stdio.h> 
+
+sigset_t sig_proc; 
+struct sigaction action;
+
+void sig_hand(int sig){ 
+}
+
+void calcul_1 (){
+  int i;
+  for (i = 0; i < 1E8; i++);
+}
+
+void calcul_2 (){
+  int i;
+  for (i = 0; i < 1E8; i++);
+}
+
+int main (int argc, char * argv[]) {
+
+  sigfillset(&sig_proc); 
+  action.sa_mask=sig_proc; 
+  action.sa_flags=0; 
+  action.sa_handler = sig_hand; 
+  sigdelset(&sig_proc,SIGUSR1);
+  sigdelset(&sig_proc,SIGUSR2);
+  sigaction(SIGUSR1, &action,NULL);
+  sigaction(SIGUSR2, &action,NULL);
+  
+  int i;
+  pid_t pid_fils[2];
+
+
+  while ((i<2) && ((pid_fils[i] = fork())!=0))
+    i++;
+  
+  printf("Debut calcul_1\n");
+  calcul_1 ();
+  printf("Fin calcul_1\n");
+   if(i==2){
+     sleep(1);
+     kill(pid_fils[0],SIGUSR1);
+     sigsuspend(&sig_proc);
+     kill(pid_fils[1],SIGUSR1);
+     sigsuspend(&sig_proc);
+   }     
+   if(i==0){
+     sigsuspend(&sig_proc);
+     kill(getppid(),SIGUSR1);
+   }if(i==1){
+     sigsuspend(&sig_proc);
+     kill(getppid(),SIGUSR2); 
+   }
+  printf("Debut calcul_2\n");
+  calcul_2 ();
+  printf("Fin calcul_2\n");
+  printf ("fin processus %d \n",i);            
+
+  return EXIT_SUCCESS;   
+}

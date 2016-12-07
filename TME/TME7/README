@@ -1,0 +1,73 @@
+== Participants : 2 ==
+
+	David TOTY
+	Sebastien GAUTHEROT
+	
+
+== Fichiers inclus ==
+
+
+   	include/ficindex_enonce.h
+		Header pour le programme principal.
+		
+	obj/autotestfic.o
+		fichier .o fourni permettant la mise en place d'un binaire d'auto test.
+		
+	src/ficindex.c     
+		Programme pour l'exercice principal.
+
+== Directives de 'Makefile' ==
+
+
+	
+all
+	Renvoi vers directories et les binaires
+	
+directories
+	Création des répertoires
+
+clean
+	Suppression de tous les binaires, de tous les fichiers objet, et de toutes les bibliothèques
+
+
+
+
+== Etat d'avancement ==
+
+Voici l'affichage produit par l'auto test : 
+
+open creat...ok
+open creat2...ok
+open creat/excl...ok
+open trunc...ok
+close...ok
+close (bad fd)...ok
+open RW...ok
+test index...4ok
+test taille index...ok
+write...0 1 2 3 4 5 6 7 8 9 ok
+test taille tampon W...ok
+open read...ok
+read...0 1 2 3 4 5 6 7 8 9 ok
+test taille tampon R...ok
+test ecriture...ok
+lseek 0 SEEK_SET...ok
+test read...ok
+lseek 4 SEEK_CUR...ok
+test read...ok
+open APPEND...ok
+test ecriture...ok
+lseek 0 SEEK_END...ok
+ok
+indsearch...ok
+ok
+indsearch inexistant...ok
+indxchg big...ok
+indopen: No such file or directory
+Resultat 18.00  (soit 27/30).
+
+
+
+== Réponses ==
+
+	

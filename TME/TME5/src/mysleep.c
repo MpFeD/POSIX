@@ -1,0 +1,41 @@
+#include <sys/types.h> 
+#include <signal.h> 
+#include <unistd.h> 
+#include <stdlib.h> 
+#include <stdio.h> 
+
+sigset_t sig_proc; 
+sigset_t sig_proc2; 
+struct sigaction action;
+struct sigaction action2;
+
+void sig_hand(int sig){ 
+}
+
+void mysleep(int a){
+  sigfillset(&sig_proc); 
+  
+  action.sa_mask=sig_proc; 
+  action.sa_flags=0; 
+  action.sa_handler = sig_hand; 
+
+
+  sigdelset(&sig_proc,SIGALRM);
+  sigprocmask(SIG_SETMASK, &sig_proc, &sig_proc2);
+  sigaction(SIGALRM, &action, &action2);
+  
+  alarm(a);
+  sigsuspend(&sig_proc);
+
+  sigprocmask(SIG_SETMASK, &sig_proc2, NULL);
+  sigaction(SIGALRM, &action2,NULL);
+}
+
+
+int main (int arg, char** argv) {
+  printf("Debut de la fonction my mysleep\n");
+  mysleep(5);
+  printf("Fin de la fonction my mysleep\n");
+  return 0;
+}
+
